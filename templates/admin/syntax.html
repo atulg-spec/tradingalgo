@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Smart-algo | Syntax Generator</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <link rel="icon" href="/static/assets/img/title.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<style>
+    .display-none {
+        display: none;
+    }
+
+    .suggestions {
+        z-index: 2500;
+        padding: 2%;
+        background-color: white;
+        position: fixed;
+        width: 100%;
+        border-right: 1px solid black;
+        border-left: 1px solid black;
+    }
+</style>
+
+<body class="">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper  ">
+            <div class="navbar-content scroll-div ">
+                <div class="">
+                    <div class="main-menu-header">
+                        <a href="/profile">
+                            <img class="img-radius" src="/static/images/user/avatar.jpg" alt="User-Profile-Image">
+                            <div class="user-details">
+                                <span class="text-c-green">Hii {{request.user}}</span>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+                <ul class="nav pcoded-inner-navbar ">
+                    <li class="nav-item pcoded-menu-caption">
+                    </li>
+                    <li class="nav-item mt-2">
+                        <a href="/symbols" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-bookmark"></i></span><span
+                                class="pcoded-mtext">Symbols</span></a>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <!-- ========   change your logo hear   ============ -->
+            <a href="/admin/">
+                <h4 class="text-white mt-2">Smartalgo</h4>
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="/static/images/user/avatar.jpg" class="img-radius" alt="User-Profile-Image">
+                                <a href="/profile" class="text-white"><span>Hii {{request.user}}</span></a>
+                                <a href="/logout" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </header>
+    <div class="card table-card suggestions display-none" id="search_sugg">
+        <div class="alert alert-primary alert-dismissible fade show display-none" role="alert" id="copy-alert">
+            <div class="card-body p-0">
+                <div class="table-responsive">
+                    <strong>Copied</strong>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">×</span></button>
+                </div>
+            </div>
+        </div>
+        <table class="table table-hover mb-0">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>SYMBOL</th>
+                    <th></th>
+                    <th>TOKEN</th>
+                </tr>
+            </thead>
+            <tbody id="suggestions">
+            </tbody>
+        </table>
+    </div>
+    <div class="pcoded-main-container">
+        <div class="card">
+            <div class="card-header borderless ">
+                <h4>Syntax Generator</h4>
+                <div class="card-header-right">
+                    <div class="btn-group card-option">
+                        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                            aria-expanded="false">
+                            <i class="feather icon-more-horizontal"></i>
+                        </button>
+                        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                                        maximize</span><span style="display:none"><i class="feather icon-minimize"></i>
+                                        Restore</span></a>
+                            </li>
+                            <li class="dropdown-item minimize-card"><a href="#!"><span><i
+                                            class="feather icon-minus"></i>
+                                        collapse</span><span style="display:none"><i class="feather icon-plus"></i>
+                                        expand</span></a></li>
+                            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i>
+                                    reload</a></li>
+                            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i>
+                                    remove</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="card-body table-border-style">
+                <div class="table-responsive">
+                    <!-- HIDDEN INPUTS -->
+                    <!-- {% csrf_token %} -->
+                    <input type="hidden" name="j_syntax" id="j_syntax" value="">
+                    <input id="broker" type="hidden" name="broker" required>
+                    <input id="users" type="hidden" name="users" required>
+                    <input id="segment" type="hidden" name="segment" required>
+                    <input id="option" type="hidden" name="option" required>
+                    <input id="callput" type="hidden" name="callput" required>
+                    <input id="otype" type="hidden" name="otype" required>
+                    <input id="ptype" type="hidden" name="ptype" required>
+                    <input id="ttype" type="hidden" name="ttype" required>
+                    <input id="position" type="hidden" name="position" required>
+                    <!-- HIDDEN INPUTS -->
+                    <!-- BROKER -->
+                    <label for="broker" class="floating-label"><b>Broker</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="angel"
+                        onclick="updateBroker('angel ',this.id)">Angel</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="dhan"
+                        onclick="updateBroker('dhan ',this.id)">Dhan</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="fyers"
+                        onclick="updateBroker('fyers ',this.id)">Fyers</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="5paisa"
+                        onclick="updateBroker('5paisa ',this.id)">5paisa</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="alice"
+                        onclick="updateBroker('alice blue ',this.id)">Alice</button>
+                    <br><br>
+                    <!-- SEGMENT -->
+                    <label for="segment" class="floating-label"><b>Segment</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 segment" id="NSE"
+                        onclick="updatesyntax('segment',this.id)">NSE</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 segment" id="NFO"
+                        onclick="updatesyntax('segment',this.id)">NFO</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 segment" id="MCX"
+                        onclick="updatesyntax('segment',this.id)">MCX</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 segment" id="FUTURE"
+                        onclick="updatesyntax('segment',this.id)">FUTURE</button>
+                    <br><br>
+                    <!-- SYMBOL -->
+                    <label for="symbol" class="floating-label"><b>Symbol</b></label>
+                    <input class="form-control btn-outline-dark w-50" type="text" id="symbol" onkeyup="syntax(this.id)"
+                        placeholder="SBIN-EQ" name="symbol" required>
+                    <br>
+                    <!-- OPTION -->
+                    <label for="option" class="floating-label"><b>Option</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 option" id="True"
+                        onclick="updatesyntax('option',this.id);showoption('True',this)">True</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 option" id="False"
+                        onclick="updatesyntax('option',this.id);showoption('False',this)">False</button>
+                    <br><br>
+                    <div id="option_div" class="display-none">
+                        <!-- OPTION DIV-->
+                        <label for="callput" class="floating-label"><b>Call or Put</b></label>
+                        <br>
+                        <button type="button" class="btn btn-outline-dark mt-2 callput" id="CE"
+                            onclick="updatesyntax('callput',this.id)">CE</button>
+                        <button type="button" class="btn btn-outline-dark mt-2 callput" id="PE"
+                            onclick="updatesyntax('callput',this.id)">PE</button>
+                        <br><br>
+                        <!-- GAP -->
+                        <label for="gap" class="floating-label"><b>Gap</b></label>
+                        <input class="form-control btn-outline-dark w-50" type="text" id="gap" onkeyup="syntax(this.id)"
+                            placeholder="'+' or '-' value" name="gap" value="+200" required>
+                        <br>
+                        <!-- RATE -->
+                        <label for="rate" class="floating-label"><b>Rate</b></label>
+                        <input class="form-control btn-outline-dark w-50" type="text" id="rate"
+                            onkeyup="syntax(this.id)" placeholder="100" name="rate" value="100" required>
+                        <br>
+                    </div>
+                    <!-- TOKEN -->
+                    <label for="token" class="floating-label"><b>Token</b></label>
+                    <input class="form-control btn-outline-dark w-50" type="text" id="token" onkeyup="syntax(this.id)"
+                        placeholder="3045" name="token" required>
+                    <br>
+                    <!-- YOUR PRICE -->
+                    <label for="price" class="floating-label"><b>Price</b></label>
+                    <input class="form-control btn-outline-dark w-50" type="text" id="price" onkeyup="syntax(this.id)"
+                        placeholder="0" name="price" value="0" required>
+                    <br>
+                    <!-- ORDER TYPE -->
+                    <label for="otype" class="floating-label"><b>Order Type</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 otype" id="MARKET"
+                        onclick="updatesyntax('otype',this.id)">MARKET</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 otype" id="LIMIT"
+                        onclick="updatesyntax('otype',this.id)">LIMIT</button>
+                    <br><br>
+                    <!-- PRODUCT TYPE -->
+                    <label for="ptype" class="floating-label"><b>Product Type</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 ptype" id="INTRADAY"
+                        onclick="updatesyntax('ptype',this.id)">INTRADAY</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 ptype" id="NRML"
+                        onclick="updatesyntax('ptype',this.id)">NRML</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 ptype" id="CNC"
+                        onclick="updatesyntax('ptype',this.id)">CNC</button>
+                    <br><br>
+                    <!-- TRANSACTION TYPE -->
+                    <label for="ttype" class="floating-label"><b>Transaction Type</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 ttype" id="BUY"
+                        onclick="updatesyntax('ttype',this.id)">BUY</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 ttype" id="SELL"
+                        onclick="updatesyntax('ttype',this.id)">SELL</button>
+                    <br><br>
+                    <!-- STOPLOSS -->
+                    <label for="stoploss" class="floating-label"><b>Stop Loss</b></label>
+                    <input class="form-control btn-outline-dark w-50" type="number" id="stoploss"
+                        onkeyup="syntax(this.id)" placeholder="0" name="stoploss" required>
+                    <br>
+                    <!-- TARGET -->
+                    <label for="target" class="floating-label"><b>Target</b></label>
+                    <input class="form-control btn-outline-dark w-50" type="number" id="target"
+                        onkeyup="syntax(this.id)" placeholder="0" name="target" required>
+                    <br>
+                    <!-- POSITION -->
+                    <label for="position" class="floating-label"><b>Position</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2 position" id="OPEN"
+                        onclick="updatesyntax('position',this.id)">OPEN</button>
+                    <button type="button" class="btn btn-outline-dark mt-2 position" id="close"
+                        onclick="updatesyntax('position',this.id)">CLOSE</button>
+                    <br><br>
+                    <!-- USERS -->
+                    <label for="users" class="floating-label"><b>Users</b></label>
+                    <br>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="free"
+                        onclick="updateUsers('free ',this.id)">FREE</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="basic"
+                        onclick="updateUsers('basic ',this.id)">BASIC</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="pro"
+                        onclick="updateUsers('pro ',this.id)">PRO</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="vip"
+                        onclick="updateUsers('vip ',this.id)">VIP</button>
+                    <button type="button" class="btn btn-outline-dark mt-2" id="premium"
+                        onclick="updateUsers('premium ',this.id)">PREMIUM</button>
+                    <br><br><br>
+                    <button type="button" onclick="show()" class="btn btn-primary" data-toggle="modal"
+                        data-target="#exampleModalPopovers">GENERATE</button>
+                    </form>
+                </div>
+            </div>
+            <div class="card-body">
+                <div id="exampleModalPopovers" class="modal fade" tabindex="-1" role="dialog"
+                    aria-labelledby="exampleModalPopoversLabel" style="display: none;" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalPopoversLabel">SYNTAX</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="alert alert-primary alert-dismissible fade show display-none" role="alert"
+                                id="alert">
+                                <strong>Copied</strong>
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                        aria-hidden="true">×</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="btn-light" onclick="copyToClipboard(this.id)" id="read"></div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" onclick="copyToClipboard('read')"
+                                    class="btn btn-primary">COPY</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script src="/static/js/vendor-all.min.js"></script>
+            <script src="/static/js/plugins/bootstrap.min.js"></script>
+            <script src="/static/js/pcoded.min.js"></script>
+            <script src="/static/js/pages/dashboard-main.js"></script>
+            <script>
+                console.log("hello")
+                let json_syntax = {
+                    "syntaxcount": 1,
+                    "syntax1": {
+                        "broker": "",
+                        "variety": "NORMAL",
+                        "segment": "",
+                        "symbol": "",
+                        "token": "",
+                        "price": "0",
+                        "otype": "MARKET",
+                        "ptype": "INTRADAY",
+                        "ttype": "",
+                        "position": "",
+                        "stoploss": "",
+                        "target": "",
+                        "trailing_sl": "",
+                        "extype": "C",
+                        "option": "False",
+                        "callput": "",
+                        "gap": "+200",
+                        "rate": "100",
+                        "users": ""
+                    }
+                }
+                console.log(json_syntax)
+                function syntax(i) {
+                    console.log(document.getElementById(i).value)
+                    json_syntax['syntax1'][i] = document.getElementById(i).value
+                    console.log(json_syntax)
+                    document.getElementById('j_syntax').value = JSON.stringify(json_syntax)
+                }
+                // UPDATE BROKER
+                function updateBroker(brokerName, id) {
+                    var brokerInput = document.getElementById("broker");
+                    var currentBrokers = brokerInput.value;
+                    // Check if the brokerName is already in the input field
+                    if (currentBrokers.includes(brokerName)) {
+                        // Remove the brokerName if it's already in the input
+                        document.getElementById(id).classList.remove('btn-dark')
+                        document.getElementById(id).classList.add('btn-outline-dark')
+                        currentBrokers = currentBrokers.replace(brokerName, '');
+                    } else {
+                        // Add the brokerName to the input
+                        document.getElementById(id).classList.add('btn-dark')
+                        document.getElementById(id).classList.remove('btn-outline-dark')
+                        currentBrokers += brokerName;
+                    }
+                    brokerInput.value = currentBrokers;
+                    syntax('broker')
+                }
+                // UPDATE USERS
+                function updateUsers(brokerName, id) {
+                    var brokerInput = document.getElementById("users");
+                    var currentBrokers = brokerInput.value;
+                    // Check if the brokerName is already in the input field
+                    if (currentBrokers.includes(brokerName)) {
+                        // Remove the brokerName if it's already in the input
+                        document.getElementById(id).classList.remove('btn-dark')
+                        document.getElementById(id).classList.add('btn-outline-dark')
+                        currentBrokers = currentBrokers.replace(brokerName, '');
+                    } else {
+                        // Add the brokerName to the input
+                        document.getElementById(id).classList.add('btn-dark')
+                        document.getElementById(id).classList.remove('btn-outline-dark')
+                        currentBrokers += brokerName;
+                    }
+                    brokerInput.value = currentBrokers;
+                    syntax('users')
+                }
+                function updatesyntax(id, val) {
+                    var updateInput = document.getElementById(id);
+                    elements = document.getElementsByClassName(id);
+                    for (var i = 0; i < elements.length; i++) {
+                        var element = elements[i];
+                        element.classList.remove('btn-dark')
+                        element.classList.add('btn-outline-dark')
+                    }
+                    if (updateInput.value.includes(val)) {
+                        document.getElementById(val).classList.remove('btn-dark')
+                        document.getElementById(val).classList.add('btn-outline-dark')
+                        updateInput.value = '';
+                    } else {
+                        document.getElementById(val).classList.add('btn-dark')
+                        document.getElementById(val).classList.remove('btn-outline-dark')
+                        updateInput.value = val;
+                    }
+                    syntax(id)
+                }
+                function showoption(b, ele) {
+                    if (b == 'True' && ele.classList.contains('btn-dark')) {
+                        document.getElementById('token').value = '0000'
+                        syntax('token')
+                        document.getElementById('option_div').classList.remove('display-none')
+                    }
+                    else {
+                        document.getElementById('token').value = ''
+                        document.getElementById('option_div').classList.add('display-none')
+                    }
+                }
+                function show() {
+                    console.log("show")
+                    document.getElementById('read').innerHTML = JSON.stringify(json_syntax)
+                }
+                function copyToClipboard(i) {
+                    var val = document.getElementById(i).textContent
+                    var copyText = document.createElement("input");
+                    copyText.value = val
+                    copyText.select();
+                    copyText.setSelectionRange(0, 99999); // For mobile devices
+                    navigator.clipboard.writeText(copyText.value);
+                    document.getElementById('alert').classList.toggle('display-none')
+                    document.getElementById('copy-alert').classList.toggle('display-none')
+                    setTimeout(() => {
+                        document.getElementById('copy-alert').classList.toggle('display-none')
+                        document.getElementById('alert').classList.toggle('display-none')
+                    }, 1000)
+                }
+
+            //     // SYMBOL SEARCH
+            //     // const searchInput = document.getElementById('search-input');
+            //     // const suggestionsDiv = document.getElementById('suggestions');
+            //     // const symboldata = JSON.parse('{{symbollist|safe}}');
+            //     // const suggestions = [];
+            //     // for (i in symboldata) {
+            //     //     suggestions.push(i);
+            //     // }
+            //     // searchInput.addEventListener('input', () => {
+            //     //     document.getElementById('search_sugg').classList.remove('display-none')
+            //     //     const searchTerm = searchInput.value.toLowerCase();
+            //     //     const filteredSuggestions = suggestions.filter(suggestion =>
+            //     //         suggestion.toLowerCase().includes(searchTerm)
+            //     //     );
+            //     //     suggestionsDiv.innerHTML = '';
+
+            //     //     filteredSuggestions.forEach(suggestion => {
+            //     //         const suggestionDiv = document.createElement('tr');
+            //     //         suggestionDiv.innerHTML = `
+            //     //             <td></td>
+            //     //             <td><label id='${suggestion}'>${suggestion}</label>
+            //     //                 <label class='ml-2' onclick="copyToClipboard('${suggestion}')"><i class='feather icon-copy'></i></label></td>
+            //     //                 <td></td>
+            //     //                 <td>
+            //     //                     <label id='${symboldata[suggestion]['token']}' onclick='copyToClipboard(this.id)'>${symboldata[suggestion]['token']}</label>
+            //     //             <label class='ml-2' onclick='copyToClipboard(${symboldata[suggestion]['token']})'><i class='feather icon-copy'></i></label></td>
+            //     //             `;
+            //     //             suggestionsDiv.appendChild(suggestionDiv);
+            //     //         });
+            //     // });
+            //     // function hide_search() {
+            //     //     document.getElementById('search_sugg').classList.add('display-none')
+            //     // }
+
+
+
+            //     const searchInput = document.getElementById('search-input');
+            //     const suggestionsDiv = document.getElementById('suggestions');
+            //     const symboldata = JSON.parse('{{symbollist|safe}}');
+            //     const suggestions = Object.keys(symboldata);
+
+            //     let timeout;
+
+            //     searchInput.addEventListener('input', () => {
+            //         document.getElementById('search_sugg').classList.remove('display-none')
+            //         clearTimeout(timeout);
+            //         timeout = setTimeout(() => {
+            //             const searchTerm = searchInput.value.toLowerCase();
+            //             const filteredSuggestions = suggestions.filter(suggestion =>
+            //                 suggestion.toLowerCase().includes(searchTerm)
+            //             ).slice(0, 100); // Limit results to the first 50 items
+            //             renderSuggestions(filteredSuggestions);
+            //         }, 300); // Adjust the debounce delay as needed
+            //     });
+
+            //     function renderSuggestions(filteredSuggestions) {
+            //         const suggestionsHTML = filteredSuggestions.map(suggestion => `
+            //         <tr>
+            // <td></td>
+            //                 <td><label id='${suggestion}'>${suggestion}</label>
+            //                 <label class='ml-2' onclick="copyToClipboard('${suggestion}')"><i class='feather icon-copy'></i></label></td>
+            //                 <td></td>
+            //                 <td>
+            //                 <label id='${symboldata[suggestion]['token']}' onclick='copyToClipboard(this.id)'>${symboldata[suggestion]['token']}</label>
+            //                 <label class='ml-2' onclick='copyToClipboard(${symboldata[suggestion]['token']})'><i class='feather icon-copy'></i></label></td></tr>`
+            //         ).join('');
+
+            //         suggestionsDiv.innerHTML = suggestionsHTML;
+            //     }
+
+            //     function hide_search() {
+            //         document.getElementById('search_sugg').classList.add('display-none');
+            //     }
+
+            </script>
+        </div>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<div class="">
+    <div class="card">
+        <div class="card-header borderless ">
+            <h5>Notifications</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                                    maximize</span><span style="display:none"><i class="feather icon-minimize"></i>
+                                    Restore</span></a>
+                        </li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                                    collapse</span><span style="display:none"><i class="feather icon-plus"></i>
+                                    expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i>
+                                reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="table-responsive">
+            <table class="table">
+                <tbody>
+                    {% if notification %}
+                    {% for x in notification reversed %}
+                    <div class="">
+                        <tr>
+                            <td data-toggle="modal" data-target="#modal{{x.id}}" class="">
+                                <strong style="font-size: 12px;" class="text-muted">Admin</strong>
+                                <span class="ext-muted m-r-5 m-l-10" style="font-size: 8px;">
+                                    <i class="icon feather icon-clock"></i>
+                                    {{x.date_time}}
+                                </span>
+                                <br>
+                                <span class="text-dark" style="font-size: 12px;">{{x.title}}</span>
+                                <br>
+                                <span class="text-muted" style="font-size: 12px;">{{x.content}}</span>
+                            </td>
+                        </tr>
+
+                        <div id="modal{{x.id}}" class="modal fade" tabindex="-1" role="dialog"
+                            aria-labelledby="modal{{x.id}}Label" aria-hidden="true">
+                            <div class="modal-dialog modal-dialog-centered" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="modal{{x.id}}Label">{{x.title}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p>{{x.content}}</p>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn  btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                    {% else %}
+                    <div class="card">
+                        <div class="card-body">
+                            <p><i class="icon feather icon-activity m-r-10"></i> Nothing to display</p>
+                        </div>
+                    </div>
+                    {% endif %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+{% endblock body %}

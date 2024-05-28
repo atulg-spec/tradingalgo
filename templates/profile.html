@@ -1,0 +1,166 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<div class="col-xl-12 col-md-12">
+    <div class="card latest-update-card">
+        <div class="card-header">
+            <h5>User Profile</h5>
+            <div class="card-header-right">
+                <div class="btn-group card-option">
+                    <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+                        aria-expanded="false">
+                        <i class="feather icon-more-horizontal"></i>
+                    </button>
+                    <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                        <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                                    maximize</span><span style="display:none"><i class="feather icon-minimize"></i>
+                                    Restore</span></a></li>
+                        <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                                    collapse</span><span style="display:none"><i class="feather icon-plus"></i>
+                                    expand</span></a></li>
+                        <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i>
+                                reload</a></li>
+                        <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <div id="edit" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle"
+                aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered" role="document">
+                    <div class="modal-content">
+                        <form action="/profile" method="post">
+                            {% csrf_token %}
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Edit Profile</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                                        aria-hidden="true">&times;</span></button>
+                            </div>
+                            <div class="modal-body">
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">Plan <i class="feather icon-edit-1"></i></label>
+                                        <a href="/plan"><input type="text" placeholder="None"
+                                                value="{{sus.plan_type}} Plan" class="form-control" readonly></a>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">Crudeoil Quantity</label>
+                                        <input type="number" name="crudeoil_quantity" placeholder="1 Lot = 100 qty"
+                                            value="{{qty.crudeoil_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">NIFTY Quantity</label>
+                                        <input type="number" name="nifty_quantity" placeholder="1 Lot = 50 qty"
+                                            value="{{qty.nifty_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">BANK NIFTY Quantity</label>
+                                        <input type="number" name="bank_nifty_quantity" placeholder="1 Lot = 15 qty"
+                                            value="{{qty.bank_nifty_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">FIN NIFTY Quantity</label>
+                                        <input type="number" name="fin_nifty_quantity" placeholder="1 Lot = 40 qty"
+                                            value="{{qty.fin_nifty_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">SENSEX Quantity</label>
+                                        <input type="number" name="sensex_quantity" placeholder="1 Lot = 10 qty"
+                                            value="{{qty.sensex_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">BANKEX Quantity</label>
+                                        <input type="number" name="bankex_quantity" placeholder="1 Lot = 15 qty"
+                                            value="{{qty.bankex_quantity}}" class="form-control" required>
+                                    </div>
+                                </div>
+                                <div>
+                                    <div class="form-group">
+                                        <label class="floating-label">Default Quantity</label>
+                                        <input type="number" name="quantity" placeholder="0" value="{{qty.quantity}}"
+                                            class="form-control" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+            <div class="latest-update-box">
+                <div class="row p-t-30 p-b-30">
+                    <div class="col-auto text-right update-meta">
+                        <img class="img-radius" src="/static/images/user/avatar.jpg" alt="User-Profile-Image">
+                    </div>
+                    <div class="col">
+                        <a href="#!">
+                            <h6>Username</h6>
+                        </a>
+                        <p class="text-muted m-b-0">{{userr.username}}</p>
+                        <hr>
+                        <a href="#!">
+                            <h6>Suscription</h6>
+                        </a>
+                        {% if sus.plan_type %}
+                        <p class="text-muted m-b-0">{{sus.plan_type}} Plan <br><strong>Expire on:
+                            </strong>{{sus.expiry_date}}<a href="/plan"><i class="feather icon-edit-1"></i></a></p>
+                        {% else %}
+                        <p class="text-muted m-b-0">Not Suscribed</p>
+                        <a href="/plan" class="text-info m-b-0"><i class="feather icon-info"></i> Suscribe Now</a>
+                        {% endif %}
+                        <hr>
+                        <a href="#!">
+                            <h6>Quantity <code> /bot order</code></h6>
+                        </a>
+                        {% if qty.quantity %}
+                        <p class="text-muted m-b-0">Default : {{qty.quantity}}</p>
+                        <p class="text-muted m-b-0">CRUDEOIL : {{qty.crudeoil_quantity}}</p>
+                        <p class="text-muted m-b-0">NIFTY : {{qty.nifty_quantity}}</p>
+                        <p class="text-muted m-b-0">BANKNIFTY : {{qty.bank_nifty_quantity}}</p>
+                        <p class="text-muted m-b-0">FINNIFTY : {{qty.fin_nifty_quantity}}</p>
+                        <p class="text-muted m-b-0">SENSEX : {{qty.sensex_quantity}}</p>
+                        <p class="text-muted m-b-0">BANKEX : {{qty.bankex_quantity}}</p>
+                        {% else %}
+                        <p class="text-muted m-b-0"><a data-toggle="modal" data-target="#edit">Add <i
+                                    class="feather icon-plus-square"></i></a></p>
+                        {% endif %}
+                        <hr>
+                        <a href="#!">
+                            <h6>Total Bot Order Placed</h6>
+                        </a>
+                        <p class="text-muted m-b-0">{{sus.placed_order}} <a href="/tradestatus"
+                                class="text-info mx-5"><i class="feather icon-activity"></i> Check status</a></p>
+                    </div>
+                </div>
+            </div>
+            <div class="text-right">
+                <button class="btn btn-primary" data-toggle="modal" data-target="#edit"><i
+                        class="feather icon-edit"></i> Edit</button>
+                <a href="/logout"><button class="btn btn-danger"><i class="feather icon-log-out"></i>
+                        Logout</button></a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock body %}

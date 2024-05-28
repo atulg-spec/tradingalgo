@@ -1,0 +1,27 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<center>
+        <div style="margin:auto; width: 80%;text-align: left;">
+          <form method="POST" action="/apicreate">
+            {% csrf_token %}
+            <br><br>
+            <strong class="heading" style="color:#eb513d;">Create API</strong>
+            <br><br>
+            <label class="inputp">Enter Your Client Id</label>
+            <br>
+            <input type="text" name="clientid" placeholder="clientId" class="logininput" required>
+            <br>
+            <label class="inputp">Enter Your API KEY</label>
+            <br>
+            <input type="text" name="apikey" placeholder="dfjdghflskfjhdlseajsgjkgejfahskl" class="logininput" required>
+            <br><br>
+            <button type="submit" class="loginsubmit">Create</button>
+            
+          </form>
+        </div>
+</center>
+{% endblock body %}

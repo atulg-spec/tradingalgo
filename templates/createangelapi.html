@@ -1,0 +1,73 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<div class="col-xl-12">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>Angel ONE</h5>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="/saveangelapi">
+            {% csrf_token %}
+            <div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label class="floating-label">Api Name</label>
+                  <input type="text" name="name" placeholder="Name" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label class="floating-label">ENTER YOUR CLIENT ID</label>
+                  <input type="text" name="clientid" placeholder="ClientId" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label class="floating-label">ENTER YOUR MPIN</label>
+                  <input type="text" name="password" placeholder="1234" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label class="floating-label">ENTER YOUR APIKEY</label>
+                  <input type="text" name="apikey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxx" class="form-control"
+                    required>
+                </div>
+              </div>
+              <div class="col-sm-5">
+                <div class="form-group">
+                  <label class="floating-label">ENTER YOUR TOTP</label>
+                  <input type="text" name="totp" placeholder="123456" class="form-control" required>
+                </div>
+              </div>
+              <div class="col-sm-5 mt-4 m-l-10">
+                <div class="form-group">
+                  <button type="submit" class="btn btn-primary">Create</button>
+                </div>
+              </div>
+            </div>
+          </form>
+          <a href="https://smartapi.angelbroking.com/signin" target="_blank"><button type=""
+              class="btn btn-info mt-5">Get
+              Credentials</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="card" style="margin-top: 20%;">
+        <iframe height="240" src="https://www.youtube.com/embed/XBKgLYmKJIw?si=JFz-fy6keczx9l4b"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

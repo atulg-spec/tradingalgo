@@ -1,0 +1,94 @@
+Quotation for App Development:
+
+Project Description:
+We will develop a mobile application for your business that will run on both iOS and Android platforms. The app will
+have the following features:
+
+User Registration and Login: Users will be able to create an account and log in using their email accounts.
+
+Profile Management: Users can see their profile information, including name, profile picture, and contact details.
+
+Market: There will be two options in the market, Apps MCX and NSE.
+
+Search: The user can search the stocks symbol. We will get them phased through API.
+User can search the stock and after searching, he has to buy and sell the stock that came.
+
+The condition of buying will be that if the price of a stock is bought at 
+₹ 200 and sells that 200 stock at 220, then the profit of 20 is being made.
+
+Now the charge for this buy and sell will be ₹ 60 for buying and ₹ 70 for selling.
+
+Admin can flex the price of this buying and selling through the admin, admin can reduce it as well as increase it.
+According to that how will be our charge and we will show those charges in users portfolio.
+
+We held this stock in the user's portfolio. This much price was given, this much was sold.
+How much was your margin and how much was your profit, how much was your loss.
+We have to show all those calculations.
+The user will test it and then a profile will come after that.
+His details will be visible in the profile.
+
+Service has to be done by entering name, address, mail id etc.
+
+Trade History: The app will display your transaction history with detailed information.
+
+Bonus: Welcome bonus to the user will be rewarded who is getting registered.
+
+Referral: There will be a referral section. In this section
+referrals came from that unique ID and the referral's bonus will be given to users of  rupees 10 or 100, 50 for one registration. The user will have that amount that will be added to his wallet.
+
+Payment Integration: The app will integrate with a secure payment gateway to facilitate online payments.
+
+Wallet: The app consist of a wallet throough which all transactions take place.
+
+Order Status: Users will be able see their order status.
+
+
+Admin Dashboard: You will have a web-based admin dashboard to manage users and listings user accounts.
+The user list will contain the complete trades, streams and trade history of the user.
+
+Analytics and Reporting: The app will provide insights into user engagement, sales, and other key performance metrics.
+
+Work Process Flow:
+
+Requirement Gathering: We will work closely with you to understand your business requirements and app objectives.
+
+UI/UX Design: Our design team will create wireframes and prototypes to define the app's user interface and user
+experience.
+
+Development: Our development team will code the app using the latest technologies and frameworks.
+
+Testing: We will perform rigorous testing to ensure the app is bug-free and meets the quality standards.
+
+Deployment: We will deploy the app to the respective app stores (Apple App Store and Google Play Store).
+
+Post-launch Support: We will provide ongoing support and maintenance to address any issues and implement updates.
+
+Price:
+
+Based on the provided requirements, the estimated cost for app development is Rupees 1,50,000 Please note that this is a rough
+estimate, and the final price may vary depending on the complexity of the features, design requirements, and any
+additional customization or integrations.
+
+Special services provided by us:
+
+Feedback and Reviews: Users can provide feedback and rate your services.
+
+
+Timeline:
+
+The estimated timeline for the app development is 5 weeks. This includes all the phases, from requirement gathering to
+deployment. The actual timeline may vary based on the project scope and any unforeseen challenges during development.
+
+Payment Terms:
+
+We propose a payment schedule as follows:
+
+20% upfront payment upon signing the contract
+20% upon completion of UI/UX design
+40% upon completion of development and testing
+20% upon app deployment and final acceptance
+Please note that these payment terms are negotiable, and we are open to discussing alternative arrangements to meet your
+business needs.
+
+We hope this quotation meets your requirements. Should you have any questions or require further clarification, please
+feel free to reach out to us. We look forward to the opportunity of working with you on this project!

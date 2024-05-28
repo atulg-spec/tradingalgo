@@ -1,0 +1,404 @@
+{% extends "admin/base_site.html" %}
+
+{% block content %}
+<div class="w-100">
+    <div class="card">
+        <div class="card-header borderless ">
+            SBIN-EQ
+            <div class="float-right">
+                <div class="btn-group card-option">
+                    <span class="mr-3 text-c-green">{{price}}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="card w-100">
+    <div class="card-header borderless ">
+        <h5>Stratergy Dashboard</h5>
+        <span class="d-block m-t-5">Users <code>Stratergy's</code> will be displayed Here.</span>
+    </div>
+    <div class="card-body table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Stratergy</th>
+                        <th>User</th>
+                        <th>Broker</th>
+                        <th>Segment</th>
+                        <th>Symbol</th>
+                        <th>Qty</th>
+                        <th>Product type</th>
+                        <th>Order type</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in ob reversed %}
+                    <tr>
+                        <td>{{x.strategy}}</td>
+                        <td>{{x.user}}</td>
+                        <td>{{x.broker}}</td>
+                        <td>{{x.segment}}</td>
+                        <td>{{x.symbol}}</td>
+                        <td>{{x.quantity}}</td>
+                        <td>{{x.product_type}}</td>
+                        <td>{{x.order_type}}</td>
+                        {% if x.status == "failed" %}
+                        <td><span class="badge badge-pill badge-light-danger">{{x.status}}</span></td>
+                        {% elif x.status == "success" %}
+                        <td><span class="badge badge-pill badge-light-success">{{x.status}}</span></td>
+                        {% else %}
+                        <td><span class="badge badge-pill badge-light-info">{{x.status}}</span></td>
+                        {% endif %}
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ==============LIMIT ORDER=========== -->
+<div class="card w-100">
+    <div class="card-header borderless ">
+        <h5>Limit Orders</h5>
+    </div>
+    <div class="card-body table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <tbody>
+                    <div id="limit_order_modal" class="modal fade" tabindex="-1" role="dialog"
+                        aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                        <div class="modal-dialog modal-dialog-centered" role="document">
+                            <form action="/limit_order" method="post">
+                                <!-- HIDDEN INPUTS -->
+                                {% csrf_token %}
+                                <input type="hidden" name="j_syntax" id="j_syntax" value="">
+                                <!-- HIDDEN INPUTS -->
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalCenterTitle">Place Target
+                                            Price
+                                            Order</h5>
+                                        <button type="button" class="close" data-dismiss="modal"
+                                            aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <!-- BROKER -->
+                                        <label for="broker" class="floating-label">Broker</label>
+                                        <input id="broker" onkeyup="syntax(this.id)" class="form-control" type="text"
+                                            placeholder="angel , dhan , alice blue , 5paisa" name="broker" required>
+                                        <br>
+                                        <!-- SEGMENT -->
+                                        <label for="segment" class="floating-label">Segment</label>
+                                        <select name="segment" class="form-control" id="segment"
+                                            onchange="syntax(this.id)" required>
+                                            <option value="">Select Segment</option>
+                                            <option value="NSE">NSE</option>
+                                            <option value="NFO">NFO</option>
+                                            <option value="MCX">MCX</option>
+                                            <option value="FUTURE">FUTURE</option>
+                                        </select>
+                                        <br>
+                                        <!-- SYMBOL -->
+                                        <label for="symbol" class="floating-label">Symbol</label>
+                                        <select id="symbol" onchange="syntax(this.id)" name="symbol"
+                                            class="form-control" required>
+                                            <option value="">Select Symbol</option>
+                                            {% for j in ob reversed %}
+                                            <option value="{{j.symbol}}">{{j.symbol}}</option>
+                                            {% endfor %}
+                                        </select>
+                                        <br>
+                                        <!-- TOKEN -->
+                                        <label for="token" class="floating-label">Token</label>
+                                        <input class="form-control" type="text" id="token" onkeyup="syntax(this.id)"
+                                            placeholder="00000" name="token" required>
+                                        <br>
+                                        <!-- YOUR PRICE -->
+                                        <label class="floating-label">Your Price</label>
+                                        <input class="form-control" type="number" placeholder="0" name="price" required>
+                                        <br>
+                                        <!-- YOUR COUNT -->
+                                        <label class="floating-label">Count</label>
+                                        <input class="form-control" type="number" placeholder="0" name="count" required>
+                                        <br>
+                                        <!-- PRODUCT TYPE TYPE -->
+                                        <label for="ptype" class="floating-label">Product Type</label>
+                                        <select name="ptype" class="form-control" id="ptype" onchange="syntax(this.id)"
+                                            required>
+                                            <option value="">Select Product Type</option>
+                                            <option value="INTRADAY">INTRADAY</option>
+                                            <option value="NRML">NRML</option>
+                                            <option value="CNC">CNC</option>
+                                        </select>
+                                        <br>
+                                        <!-- TRANSACTION TYPE -->
+                                        <label for="ttype" class="floating-label">Transaction Type</label>
+                                        <select name="ttype" class="form-control" id="ttype" onchange="syntax(this.id)"
+                                            required>
+                                            <option value="">Select Transaction Type</option>
+                                            <option value="BUY">BUY</option>
+                                            <option value="SELL">SELL</option>
+                                        </select>
+                                        <br>
+                                        <!-- POSITION -->
+                                        <label for="position" class="floating-label">With Position</label>
+                                        <select name="position" class="form-control" id="position"
+                                            onchange="syntax(this.id)" required>
+                                            <option value="">Position with ... </option>
+                                            <option value="open">open</option>
+                                            <option value="close">close</option>
+                                        </select>
+                                        <br>
+                                        <!-- STOPLOSS -->
+                                        <label for="stoploss" class="floating-label">Stop Loss</label>
+                                        <input class="form-control" type="number" id="stoploss"
+                                            onkeyup="syntax(this.id)" placeholder="0" name="stoploss" required>
+                                        <br>
+                                        <!-- TARGET -->
+                                        <label for="target" class="floating-label">Target</label>
+                                        <input class="form-control" type="number" id="target" onkeyup="syntax(this.id)"
+                                            placeholder="0" name="target" required>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn  btn-secondary"
+                                            data-dismiss="modal">Close</button>
+                                        <button type="submit" class="btn  btn-primary">Place Order</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <tr>
+                        <td>
+                            <button type="button" class="btn  btn-primary" data-toggle="modal"
+                                data-target="#limit_order_modal">Place Order</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<!-- ==============END LIMIT ORDER=========== -->
+
+
+<div class="card w-100">
+    <div class="card-header borderless ">
+        <h5>API Dashboard</h5>
+        <span class="d-block m-t-5">All <code>API's</code> will be displayed Here.</span>
+        <div class="card-header-right mt-2">
+            <div class="btn-group card-option">
+                <form action="/resetorder/" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="btn btn-dark">
+                        Reset Order Placed
+                    </button>
+                </form>
+            </div>
+            <a href="/save_history" class="btn btn-dark mx-4">
+                Update Trade History
+            </a>
+        </div>
+    </div>
+
+    <div class="card-body table-border-style">
+        <div class="table-responsive">
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th>Description</th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for x in angelob reversed %}
+                    <tr>
+                        <td>
+                            <a href="/admin/trade/angelapi/{{x.apiid}}/change/">
+                                <label class="">{{x.apiname}}</label>
+                                <br>
+                                <label class="pcoded-menu-caption text-c-green">
+                                    Angel ONE
+                                </label>
+                                <br>
+                                <label class="text-c-blue" style="font-size: 12px;">
+                                    {{x.datetime}}
+                                </label>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            {% if x.is_trading %}
+                            <label class="badge badge-pill badge-light-success">Active</label>
+                            {% else %}
+                            <label class="badge badge-pill badge-light-danger">Inactive</label>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/admin/trade/angelapi/{{x.apiid}}/change/">
+                                <i class="feather icon-settings"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for x in dhanob reversed %}
+                    <tr>
+                        <td>
+                            <a href="/admin/trade/dhanapi/{{x.apiid}}/change/">
+                                <label class="">{{x.apiname}}</label>
+                                <br>
+                                <label class="pcoded-menu-caption text-c-green">
+                                    Dhan HQ
+                                </label>
+                                <br>
+                                <label class="text-c-blue" style="font-size: 12px;">
+                                    {{x.datetime}}
+                                </label>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            {% if x.is_trading %}
+                            <label class="badge badge-pill badge-light-success">Active</label>
+                            {% else %}
+                            <label class="badge badge-pill badge-light-danger">Inactive</label>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/admin/trade/dhanapi/{{x.apiid}}/change/">
+                                <i class="feather icon-settings"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for x in fyersob reversed %}
+                    <tr>
+                        <td>
+                            <a href="/admin/trade/fyersapi/{{x.apiid}}/change/">
+                                <label class="">{{x.apiname}}</label>
+                                <br>
+                                <label class="pcoded-menu-caption text-c-green">
+                                    Fyers
+                                </label>
+                                <br>
+                                <label class="text-c-blue" style="font-size: 12px;">
+                                    {{x.datetime}}
+                                </label>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            {% if x.is_trading %}
+                            <label class="badge badge-pill badge-light-success">Active</label>
+                            {% else %}
+                            <label class="badge badge-pill badge-light-danger">Inactive</label>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/admin/trade/fyersapi/{{x.apiid}}/change/">
+                                <i class="feather icon-settings"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for x in aliceob reversed %}
+                    <tr>
+                        <td>
+                            <a href="/admin/trade/aliceapi/{{x.apiid}}/change/">
+                                <label class="">{{x.apiname}}</label>
+                                <br>
+                                <label class="pcoded-menu-caption text-c-green">
+                                    Alice Blue
+                                </label>
+                                <br>
+                                <label class="text-c-blue" style="font-size: 12px;">
+                                    {{x.datetime}}
+                                </label>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            {% if x.is_trading %}
+                            <label class="badge badge-pill badge-light-success">Active</label>
+                            {% else %}
+                            <label class="badge badge-pill badge-light-danger">Inactive</label>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/admin/trade/aliceapi/{{x.apiid}}/change/">
+                                <i class="feather icon-settings"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    {% for x in paisaob reversed %}
+                    <tr>
+                        <td>
+                            <a href="/admin/trade/paisaapi/{{x.apiid}}/change/">
+                                <label class="">{{x.apiname}}</label>
+                                <br>
+                                <label class="pcoded-menu-caption text-c-green">
+                                    5 Paisa
+                                </label>
+                                <br>
+                                <label class="text-c-blue" style="font-size: 12px;">
+                                    {{x.datetime}}
+                                </label>
+                            </a>
+                        </td>
+                        <td class="text-center">
+                            {% if x.is_trading %}
+                            <label class="badge badge-pill badge-light-success">Active</label>
+                            {% else %}
+                            <label class="badge badge-pill badge-light-danger">Inactive</label>
+                            {% endif %}
+                        </td>
+                        <td class="text-center">
+                            <a href="/admin/trade/paisaapi/{{x.apiid}}/change/">
+                                <i class="feather icon-settings"></i>
+                            </a>
+                        </td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<script>
+    let json_syntax = {
+        "syntaxcount": 1,
+        "syntax1": {
+            "broker": "",
+            "variety": "NORMAL",
+            "segment": "",
+            "symbol": "",
+            "token": "",
+            "price": "0",
+            "otype": "MARKET",
+            "ptype": "INTRADAY",
+            "ttype": "",
+            "position": "",
+            "stoploss": "",
+            "target": "",
+            "trailing_sl": "",
+            "extype": "C",
+            "option": "False",
+            "users": "strategy"
+        }
+    }
+    console.log(json_syntax)
+    function syntax(i) {
+        console.log(document.getElementById(i).value)
+        json_syntax['syntax1'][i] = document.getElementById(i).value
+        console.log(json_syntax)
+        document.getElementById('j_syntax').value = JSON.stringify(json_syntax)
+    }
+</script>
+{{ block.super }}
+{% endblock %}

@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Smart-algo</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <link rel="icon" href="/static/assets/img/title.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+        <div class="m-header">
+            <a href="/admin/">
+                <h4 class="text-white mt-2">Smartalgo</h4>
+            </a>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="/static/images/user/avatar.jpg" class="img-radius" alt="User-Profile-Image">
+                                <a href="/profile" class="text-white"><span>Hii {{request.user}}</span></a>
+                                <a href="/logout" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </header>
+    <div class="pcoded-content">
+        <div class="col-xl-12">
+            <div class="card">
+                <div class="card-header borderless ">
+                    <h5>Stratergy Dashboard</h5>
+                    <div class="card-header-right">
+                        <div class="btn-group card-option">
+                            <button type="button" class="btn dropdown-toggle" data-toggle="dropdown"
+                                aria-haspopup="true" aria-expanded="false">
+                                <i class="feather icon-more-horizontal"></i>
+                            </button>
+                            <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+                                <li class="dropdown-item full-card"><a href="#!"><span><i
+                                                class="feather icon-maximize"></i>
+                                            maximize</span><span style="display:none"><i
+                                                class="feather icon-minimize"></i> Restore</span></a>
+                                </li>
+                                <li class="dropdown-item minimize-card"><a href="#!"><span><i
+                                                class="feather icon-minus"></i>
+                                            collapse</span><span style="display:none"><i class="feather icon-plus"></i>
+                                            expand</span></a></li>
+                                <li class="dropdown-item reload-card"><a href="#!"><i
+                                            class="feather icon-refresh-cw"></i> reload</a></li>
+                                <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i>
+                                        remove</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <span class="d-block m-t-5">Users <code>Stratergy's</code> will be displayed Here.</span>
+                </div>
+                {% if messages %}
+                {% for messages in messages %}
+                <div class="alert alert-{{messages.tags}} alert-dismissible fade show" role="alert">
+                    {{messages}}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                            aria-hidden="true">&times;</span></button>
+                </div>
+                {% endfor %}
+                {% endif %}
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Add Stratergy</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <div id="stratergymodal" class="modal fade" tabindex="-1" role="dialog"
+                                    aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+                                    <div class="modal-dialog modal-dialog-centered" role="document">
+                                        <form action="/targetorder" method="post">
+                                            {% csrf_token %}
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalCenterTitle">Place Target
+                                                        Price
+                                                        Order</h5>
+                                                    <button type="button" class="close" data-dismiss="modal"
+                                                        aria-label="Close"><span
+                                                            aria-hidden="true">&times;</span></button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <label for="" class="floating-label">Segment</label>
+                                                    <select id="segment" name="segment" class="form-control">
+                                                        {% for j in seg %}
+                                                        <option value="{{j.segment_name}}">{{j.segment_name}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label for="" class="floating-label">Symbol</label>
+                                                    <select id="symbol" name="symbol" class="form-control">
+                                                        {% for j in ob reversed %}
+                                                        <option value="{{j.symbol}}">{{j.symbol}}-->{{j.symbol.broker}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label class="floating-label">Price</label>
+                                                    <input class="form-control" type="number" placeholder="0"
+                                                        name="price" required>
+                                                    <label class="floating-label">Stop Loss</label>
+                                                    <input class="form-control" type="number" placeholder="0"
+                                                        name="stoploss" required>
+                                                    <label class="floating-label">Square off</label>
+                                                    <input class="form-control" type="number" placeholder="0"
+                                                        name="squareoff" required>
+                                                    <label class="floating-label">Trailingstop Loss</label>
+                                                    <input class="form-control" type="number" placeholder="0"
+                                                        name="trailingstoploss" required>
+                                                    <label for="" class="floating-label">Variety <code>Angel ONE</code></label>
+                                                    <select id="variety" name="variety"
+                                                        class="form-control">
+                                                        <option value="ROBO">ROBO</option>
+                                                        <option value="NORMAL">NORMAL</option>
+                                                        <option value="STOPLOSS">STOPLOSS</option>
+                                                        <option value="AMO">AMO</option>
+                                                        <option value="SELL">SELL</option>
+                                                    </select>
+                                                    <label for="" class="floating-label">Product Type</label>
+                                                    <select id="producttype" name="producttype" class="form-control">
+                                                        {% for j in ptype %}
+                                                        <option value="{{j.type}}">{{j.type}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label for="" class="floating-label">Order Type</label>
+                                                    <select id="ordertype" name="ordertype" class="form-control">
+                                                        {% for j in otype %}
+                                                        <option value="{{j.type}}">{{j.type}}</option>
+                                                        {% endfor %}
+                                                    </select>
+                                                    <label for="" class="floating-label">Transaction Type</label>
+                                                    <select id="transactiontype" name="transactiontype"
+                                                        class="form-control">
+                                                        <option value="BUY">BUY</option>
+                                                        <option value="SELL">SELL</option>
+                                                    </select>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn  btn-secondary"
+                                                        data-dismiss="modal">Close</button>
+                                                    <button type="submit" class="btn  btn-primary">Place Order</button>
+                                                </div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                                <tr>
+                                    <td>
+                                        <button type="button" class="btn  btn-primary" data-toggle="modal"
+                                            data-target="#stratergymodal">Place Order</button>
+                                    </td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+                <div class="card-body table-border-style">
+                    <div class="table-responsive">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Stratergy</th>
+                                    <th>User</th>
+                                    <th>Broker</th>
+                                    <th>Segment</th>
+                                    <th>Symbol</th>
+                                    <th>Qty</th>
+                                    <th>Product type</th>
+                                    <th>Order type</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for x in ob reversed %}
+                                <tr>
+                                    <td>{{x.strategy}}</td>
+                                    <td>{{x.user}}</td>
+                                    <td>{{x.broker}}</td>
+                                    <td>{{x.segment}}</td>
+                                    <td>{{x.symbol}}</td>
+                                    <td>{{x.quantity}}</td>
+                                    <td>{{x.product_type}}</td>
+                                    <td>{{x.order_type}}</td>
+                                    {% if x.status == "failed" %}
+                                    <td><span class="badge badge-pill badge-light-danger">{{x.status}}</span></td>
+                                    {% elif x.status == "success" %}
+                                    <td><span class="badge badge-pill badge-light-success">{{x.status}}</span></td>
+                                    {% else %}
+                                    <td><span class="badge badge-pill badge-light-info">{{x.status}}</span></td>
+                                    {% endif %}
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="/static/js/vendor-all.min.js"></script>
+    <script src="/static/js/plugins/bootstrap.min.js"></script>
+    <script src="/static/js/pcoded.min.js"></script>
+    <script src="/static/js/pages/dashboard-main.js"></script>
+    <script>
+        $('#exampleModal').on('show.bs.modal', function (event) {
+            var button = $(event.relatedTarget)
+            var recipient = button.data('whatever')
+            var modal = $(this)
+            modal.find('.modal-title').text('New message to ' + recipient)
+            modal.find('.modal-body input').val(recipient)
+        })
+    </script>
+</body>
+
+</html>

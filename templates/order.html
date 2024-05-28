@@ -1,0 +1,138 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+
+
+<center>
+    <div class="overflowwrapdiv">
+        <form method="POST" action="/order/{{apiid}}">
+            {% csrf_token %}
+            <br><br>
+            <h2 style="color:#e4403d;">Order</h2>
+            <strong><label class="inputp">Variety</label></strong>
+            <br>
+            <div class="selectdiv" id="normalid">
+                <label for="NORMAL" id="lnormal" onclick="changeeffect(this)">
+                    NORMAL
+                    <input type="checkbox" value="NORMAL" name="variety" id="NORMAL" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="stoplossid">
+                <label for="STOPLOSS" id="lstoploss" onclick="changeeffect(this)">
+                    STOPLOSS
+                    <input type="checkbox" value="STOPLOSS" name="variety" id="STOPLOSS" class="display-none">
+                </label>
+            </div>
+            <br>
+            <strong><label class="inputp">SYMBOL TOKEN</label></strong>
+            <br>
+            <input type="text" name="symboltoken" placeholder="Ex. 3054" class="logininput" required>
+            <br>
+            <strong><label class="inputp">TRADING SYMBOL</label></strong>
+            <br>
+            <input type="text" name="tradingsymbol" placeholder="Ex. SBIN-EQ" class="logininput" required>
+            <br>
+            <strong><label class="inputp">EXCHANGE</label></strong>
+            <br>
+            <div class="selectdiv" id="nseid">
+                <label for="NSE" id="lnse" onclick="changeeffect(this)">
+                    NSE
+                    <input type="checkbox" value="NSE" name="exchange" id="NSE" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="bseid">
+                <label for="BSE" id="lbse" onclick="changeeffect(this)">
+                    BSE
+                    <input type="checkbox" value="BSE" name="exchange" id="BSE" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="bfoid">
+                <label for="BFO" id="lbfo" onclick="changeeffect(this)">
+                    BFO
+                    <input type="checkbox" value="BFO" name="exchange" id="BFO" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="nfoid">
+                <label for="NFO" id="lnfo" onclick="changeeffect(this)">
+                    NFO
+                    <input type="checkbox" value="NFO" name="exchange" id="NFO" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="mcxid">
+                <label for="MCX" id="lmcx" onclick="changeeffect(this)">
+                    MCX
+                    <input type="checkbox" value="MCX" name="exchange" id="MCX" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="cdsid">
+                <label for="CDS" id="lcds" onclick="changeeffect(this)">
+                    CDS
+                    <input type="checkbox" value="CDS" name="exchange" id="CDS" class="display-none">
+                </label>
+            </div>
+            <br>
+            <strong><label class="inputp">QUANTITY</label></strong>
+            <br>
+            <input type="number" name="quantity" placeholder="0" class="logininput" required>
+            <br>
+            <strong><label class="inputp">TRANSACTION TYPE</label></strong>
+            <br>
+            <div class="selectdiv" id="buyid">
+                <label for="BUY" id="buy" onclick="changeeffect(this)">
+                    BUY
+                    <input type="checkbox" value="BUY" name="exchange" id="BUY" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="sellid">
+                <label for="SELL" id="lsell" onclick="changeeffect(this)">
+                    SELL
+                    <input type="checkbox" value="SELL" name="exchange" id="SELL" class="display-none">
+                </label>
+            </div>
+            <br>
+            <strong><label class="inputp">ORDER TYPE</label></strong>
+            <br>
+            <div class="selectdiv" id="marketid">
+                <label for="MARKET" id="lmarket" onclick="changeeffect(this)">
+                    MARKET
+                    <input type="checkbox" value="MARKET" name="ordertype" id="MARKET" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="limitid">
+                <label for="LIMIT" id="llimit" onclick="changeeffect(this)">
+                    LIMIT
+                    <input type="checkbox" value="LIMIT" name="ordertype" id="LIMIT" class="display-none">
+                </label>
+            </div>
+            <br>
+            <strong><label class="inputp">PRODUCT</label></strong>
+            <br>
+            <div class="selectdiv" id="intradayid">
+                <label for="INTRADAY" id="lintraday" onclick="changeeffect(this)">
+                    INTRADAY
+                    <input type="checkbox" value="INTRADAY" name="producttype" id="INTRADAY" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="cncid">
+                <label for="CNC" id="lcnc" onclick="changeeffect(this)">
+                    CNC
+                    <input type="checkbox" value="CNC" name="producttype" id="CNC" class="display-none">
+                </label>
+            </div>
+            <div class="selectdiv" id="nrmlid">
+                <label for="NRML" id="lnrml" onclick="changeeffect(this)">
+                    NRML
+                    <input type="checkbox" value="NRML" name="producttype" id="NRML" class="display-none">
+                </label>
+            </div>
+            <br>
+            <br><br>
+            <button type="submit" class="loginsubmit">Place Order</button>
+
+        </form>
+    </div>
+</center>
+{% endblock body %}

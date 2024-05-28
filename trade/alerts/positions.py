@@ -1,0 +1,8 @@
+from dhanhq import dhanhq
+
+clientid = '1100617939'
+accesstoken = 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJpc3MiOiJkaGFuIiwicGFydG5lcklkIjoiIiwiZXhwIjoxNzAzOTA5NDk0LCJ0b2tlbkNvbnN1bWVyVHlwZSI6IlNFTEYiLCJ3ZWJob29rVXJsIjoiIiwiZGhhbkNsaWVudElkIjoiMTEwMDYxNzkzOSJ9.qJkrDil7DJeAizbFWs3LGXdNqHIWKQMVisrrCOeJAlbcUvahmArsFEimIgrXkQu50nKPOgDkn5d0ToPBd2x5qg'
+
+dhan = dhanhq(clientid,accesstoken)
+
+print(dhan.get_positions())

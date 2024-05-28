@@ -1,0 +1,13 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+{% for x in ob %}
+<form action="/place_order" method="post">
+    <input type="text" value="{{x.symbol}}">
+    <input type="text" value="{{x.symbol}}">
+</form>
+{% endfor %}
+{% endblock body %}

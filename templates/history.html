@@ -1,0 +1,274 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.5.0-beta4/html2canvas.min.js"></script>
+<style>
+  .history {
+    background-image: linear-gradient(rgb(255 255 255 / 56%), rgb(255 255 255 / 0%)), url(/static/images/historybg.jpg);
+    background-size: contain;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-position: center;
+    min-height: 900px;
+  }
+
+  label {
+    font-weight: 700;
+  }
+</style>
+
+<div class="col-xl-12">
+  {% if dhan is None %}
+  <div class="card">
+    <div class="card-header borderless ">
+      <h5>Trade History</h5>
+      <div class="card-header-right">
+        <div class="btn-group card-option">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="feather icon-more-horizontal"></i>
+          </button>
+          <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                  maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a>
+            </li>
+            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                  collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+          </ul>
+        </div>
+      </div>
+      <span class="d-block m-t-5">Your <code>Smart-algo</code> trade history.</span>
+    </div>
+    <div class="card-body">
+      <br><br><br><br><br>
+      <center>
+        <strong>
+          <i class="feather icon-layout f-20"></i>
+          <br>
+          No Data
+        </strong>
+      </center>
+      <br><br><br><br><br>
+    </div>
+  </div>
+  {% else %}
+  <div class="card history" id="my-div">
+    <div class="card-header borderless ">
+      <h5>Trade History</h5>
+      <div class="card-header-right">
+        <div class="btn-group card-option">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="feather icon-more-horizontal"></i>
+          </button>
+          <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                  maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a>
+            </li>
+            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                  collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+          </ul>
+        </div>
+      </div>
+      <span class="d-block m-t-5">Your <code>Smart-algo</code> trade history.</span>
+    </div>
+    <div class="card-body table-border-style">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <tbody>
+            <tr>
+              <th style="font-weight: 900;">API</th>
+              <th style="font-weight: 900;">QUANTITY</th>
+              <th style="font-weight: 900;">SYMBOL</th>
+              <th style="font-weight: 900;">BUY</th>
+              <th style="font-weight: 900;">SELL</th>
+              <th style="font-weight: 900;">Profit/Loss</th>
+            </tr>
+            {% for x in dhan.data reversed %}
+            <tr>
+              <td>
+                <label class="">Dhan-HQ</label>
+              </td>
+              <td><label>{{x.buyQty}}</label></td>
+              <td><label>{{x.tradingSymbol}}</label></td>
+              <td><label>{{x.buyAvg|floatformat:2}}</label></td>
+              <td><label>{{x.sellAvg|floatformat:2}}</label></td>
+              {% if x.realizedProfit < 0.0 %} <td class="text-danger">{{x.realizedProfit|floatformat:2}}</td>
+                {% else %}
+                <td class="text-success">{{x.realizedProfit|floatformat:2}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for x in angel.data reversed %}
+            <tr>
+              <td>
+                <label class="">Angel One</label>
+              </td>
+              <td><label>{{x.buyqty}}</label></td>
+              <td><label>{{x.tradingsymbol}}</label></td>
+              <td><label>{{x.totalbuyavgprice|floatformat:2}}</label></td>
+              <td><label>{{x.totalsellavgprice|floatformat:2}}</label></td>
+              {% if x.realised < 0.0 %} <td class="text-danger">{{x.realised|floatformat:2}}</td>
+                {% else %}
+                <td class="text-success">{{x.realised|floatformat:2}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for x in alice reversed %}
+            <tr>
+              <td>
+                <label class="">Alice Blue</label>
+              </td>
+              <td><label>{{x.Bqty}}</label></td>
+              <td><label>{{x.Tsym}}</label></td>
+              <td><label>{{x.Buyavgprc|floatformat:2}}</label></td>
+              <td><label>{{x.Sellavgprc|floatformat:2}}</label></td>
+              {% if x.realisedprofitloss < 0.0 %} <td class="text-danger">{{x.realisedprofitloss|floatformat:2}}</td>
+                {% else %}
+                <td class="text-success">{{x.realisedprofitloss|floatformat:2}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            {% for x in fyers.netPositions reversed %}
+            <tr>
+              <td>
+                <label class="">Fyers</label>
+              </td>
+              <td><label>{{x.buyQty}}</label></td>
+              <td><label>{{x.symbol}}</label></td>
+              <td><label>{{x.buyAvg|floatformat:2}}</label></td>
+              <td><label>{{x.sellAvg|floatformat:2}}</label></td>
+              {% if x.realized_profit < 0.0 %} <td class="text-danger">{{x.realized_profit|floatformat:2}}</td>
+                {% else %}
+                <td class="text-success">{{x.realized_profit|floatformat:2}}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+            <tr>
+              <td>Net Profit & Loss</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              {% if tpl > 0 %}
+              <td class="text-success"><label>{{tpl|floatformat:2}}</label></td>
+              {% else %}
+              <td class="text-danger"><label>{{tpl|floatformat:2}}</label></td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button id="download-button" class="btn btn-info">Download</button>
+    </div>
+  </div>
+  {% endif %}
+</div>
+
+<!--
+<br><br>
+
+
+<div class="col-xl-12">
+  <div class="card" id="my-div">
+    <div class="card-header borderless ">
+      <h5>Trade History</h5>
+      <div class="card-header-right">
+        <div class="btn-group card-option">
+          <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+            aria-expanded="false">
+            <i class="feather icon-more-horizontal"></i>
+          </button>
+          <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+            <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                  maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a>
+            </li>
+            <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                  collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+            <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+            <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+          </ul>
+        </div>
+      </div>
+      <span class="d-block m-t-5">Your <code>Smart-algo</code> trade history.</span>
+    </div>
+    <div class="card-body table-border-style">
+      <div class="table-responsive">
+        <table class="table table-hover">
+          <thead>
+            <tr>
+              <th>API</th>
+              <th>STATUS</th>
+              <th>QUANTITY</th>
+              <th>SYMBOL</th>
+              <th>BUY</th>
+              <th>SELL</th>
+              <th>Profit/Loss</th>
+            </tr>
+          </thead>
+          <tbody class="history">
+            {% for x in his reversed %}
+            {% if x.status|upper == "SUCCESS" or x.status|upper == "TRANSIT" or x.status|upper == "TRADED" or x.status == "PENDING" %}
+            <tr>
+              <td>
+                <label class="">{{x.broker|upper}}</label>
+                <br>
+                <label class="text-c-blue" style="font-size: 12px;">
+                  {{x.datetime}}
+                </label>
+              </td>
+              <td>{{x.status}}</td>
+              <td>{{x.quantity}}</td>
+              <td>{{x.symbol}}</td>
+              <td>{{x.buy}}</td>
+              <td>{{x.sell}}</td>
+              {% if x.p_l < 0.0 %}
+              <td class="text-danger">{{x.p_l|floatformat:2}}</td>
+              {% else %}
+              <td class="text-success">{{x.p_l|floatformat:2}}</td>
+              {% endif %}
+            </tr>
+            {% endif %}
+            {% endfor %}
+            <tr>
+              <td>Net Profit & Loss</td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              <td></td>
+              {% if tpl > 0 %}
+              <td class="text-success">{{tpl|floatformat:2}}</td>
+              {% else %}
+              <td class="text-danger">{{tpl|floatformat:2}}</td>
+              {% endif %}
+            </tr>
+          </tbody>
+        </table>
+      </div>
+      <button id="download-button" class="btn btn-info">Download</button>
+    </div>
+  </div>
+</div> -->
+
+<script>
+  const downloadButton = document.getElementById('download-button');
+  const divToDownload = document.getElementById('my-div');
+  downloadButton.addEventListener('click', () => {
+    html2canvas(divToDownload, { useCORS: true }).then(canvas => {
+      const image = canvas.toDataURL('image/png');
+      const downloadLink = document.createElement('a');
+      downloadLink.href = image;
+      downloadLink.download = 'smartalgo.png';
+      downloadLink.click();
+    });
+  });
+</script>
+{% endblock body %}

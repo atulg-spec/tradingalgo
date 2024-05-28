@@ -1,0 +1,42 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<div class="card">
+  <div class="card-header">
+    <h5>Alice Blue</h5>
+  </div>
+  <div class="card-body">
+    <form method="POST" action="/modifyaliceapi/{{current_api.apiid}}">
+      {% csrf_token %}
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label class="floating-label">API NAME</label>
+          <input type="text" name="name" placeholder="name" class="form-control" value="{{current_api.apiname}}" required>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label class="floating-label">ENTER YOUR USER ID</label>
+          <input type="text" name="userid" placeholder="User Id" class="form-control" value="{{current_api.userid}}" required>
+        </div>
+      </div>
+      <div class="col-sm-5">
+        <div class="form-group">
+          <label class="floating-label">ENTER YOUR APIKEY</label>
+          <input type="text" name="apikey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxx" class="form-control" value="{{current_api.apikey}}" required>
+        </div>
+      </div>
+      <div class="col-sm-5 mt-4 m-l-10">
+        <div class="form-group">
+          <button type="submit" class="btn btn-primary">Modify</button>
+        </div>
+      </div>
+    </form>
+    <a href="https://ant.aliceblueonline.com/apps?tab=API" target="_blank"><button type="" class="btn btn-info">Get
+        Credentials</button></a>
+  </div>
+</div>
+{% endblock body %}

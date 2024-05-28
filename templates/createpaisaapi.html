@@ -1,0 +1,96 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<div class="col-xl-12">
+  <div class="row">
+    <div class="col-sm-12 col-md-6">
+      <div class="card">
+        <div class="card-header">
+          <h5>Fyers</h5>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="/createpaisaapi">
+            {% csrf_token %}
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR APP NAME</label>
+                <input type="text" name="name" placeholder="name" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR APP SOURCE</label>
+                <input type="text" name="appsource" placeholder="source" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR USER ID</label>
+                <input type="text" name="userid" placeholder="UserId" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR PASSWORD</label>
+                <input type="text" name="password" placeholder="********" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR USER KEY</label>
+                <input type="text" name="userkey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxx" class="form-control"
+                  required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR ENCRYPTION KEY</label>
+                <input type="text" name="encryptionkey" placeholder="xxxxxxxxxxxxxxxxxxxxxxxxxxx" class="form-control"
+                  required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR CLIENT CODE</label>
+                <input type="text" name="clientcode" placeholder="12345678" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR SECRET KEY FOR TOTP</label>
+                <input type="text" name="secretkey" placeholder="xxxxxxxxxxxxx" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5">
+              <div class="form-group">
+                <label class="floating-label">ENTER YOUR MPIN</label>
+                <input type="text" name="mpin" placeholder="000000" class="form-control" required>
+              </div>
+            </div>
+            <div class="col-sm-5 mt-4 m-l-10">
+              <div class="form-group">
+                <button type="submit" class="btn btn-primary">CREATE</button>
+              </div>
+            </div>
+          </form>
+          <br>
+          <a href="https://tradestation.5paisa.com/apidoc" target="_blank"><button type="" class="btn btn-info">Get
+              Credentials</button></a>
+        </div>
+      </div>
+    </div>
+    <div class="col-sm-12 col-md-5">
+      <div class="card" style="margin-top: 20%;">
+        <iframe height="240" src="https://www.youtube.com/embed/ksy2XS73TL8?si=O4Qy0XWV48qH7K7b"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% endblock body %}

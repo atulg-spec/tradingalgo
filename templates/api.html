@@ -1,0 +1,60 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<h1 class="text-2xl mt-10 md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">CREATE API</h1>
+<div class="container mt-5">
+  <div class="w-72 h-52 bg-white rounded-3xl shadow-lg inline-block mx-4 my-4 sm\:w-56 md:w-36 lg:w-60">
+    <div class="px-4 pt-16">
+      <div class="font-bold text-xl mb-2">ANGEL</div>
+    </div>
+    <div class="px-6 py-2">
+      <a href="/createangelapi">
+        <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg text-white mt-4">Add API</button>
+      </a>
+    </div>
+  </div>
+  <div class="w-72 h-52 bg-white rounded-3xl shadow-lg inline-block mx-4 my-4 sm\:w-56 md:w-36 lg:w-60">
+    <div class="px-4 pt-16">
+      <div class="font-bold text-xl mb-2">FYERS</div>
+    </div>
+    <div class="px-6 py-2">
+      <a href="/createfyersapi">
+        <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg text-white mt-4">Add API</button>
+      </a>
+    </div>
+  </div>
+  <div class="w-72 h-52 bg-white rounded-3xl shadow-lg inline-block mx-4 my-4 sm\:w-56 md:w-36 lg:w-60">
+    <div class="px-4 pt-16">
+      <div class="font-bold text-xl mb-2">5 PAISA</div>
+    </div>
+    <div class="px-6 py-2">
+      <a href="/createpaisaapi">
+        <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg text-white mt-4">Add API</button>
+      </a>
+    </div>
+  </div>
+  <div class="w-72 h-52 bg-white rounded-3xl shadow-lg inline-block mx-4 my-4 sm\:w-56 md:w-36 lg:w-60">
+    <div class="px-4 pt-16">
+      <div class="font-bold text-xl mb-2">ALICE BLUE</div>
+    </div>
+    <div class="px-6 py-2">
+      <a href="/createaliceapi">
+        <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg text-white mt-4">Add API</button>
+      </a>
+    </div>
+  </div>
+  <div class="w-72 h-52 bg-white rounded-3xl shadow-lg inline-block mx-4 my-4 sm\:w-56 md:w-36 lg:w-60">
+    <div class="px-4 pt-16">
+      <div class="font-bold text-xl mb-2">DHAN HQ</div>
+    </div>
+    <div class="px-6 py-2">
+      <a href="/createdhanapi">
+        <button class="bg-purple-500 hover:bg-purple-600 px-4 py-2 rounded-lg text-white mt-4">Add API</button>
+      </a>
+    </div>
+  </div>
+</div>
+  {% endblock body %}

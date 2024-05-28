@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Smart-algo Admin | Trading made easier !</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="description" content="" />
+    <meta name="keywords" content="">
+    <meta name="author" content="Phoenixcoded" />
+    <link rel="icon" href="/static/assets/img/title.jpg" type="image/x-icon">
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body class="">
+    <div class="loader-bg">
+        <div class="loader-track">
+            <div class="loader-fill"></div>
+        </div>
+    </div>
+    <nav class="pcoded-navbar">
+        <div class="navbar-wrapper  ">
+            <div class="navbar-content scroll-div ">
+
+                <div class="">
+                    <div class="main-menu-header">
+                        <img class="img-radius" src="/static/images/user/avatar.jpg" alt="User-Profile-Image">
+                        <div class="user-details">
+                            <span class="text-c-green">Hii {{request.user}}</span>
+                        </div>
+                    </div>
+                </div>
+
+                <ul class="nav pcoded-inner-navbar ">
+                    <li class="nav-item pcoded-menu-caption">
+                        <label>Admin Panel</label>
+                    </li>
+                    <li class="nav-item mt-2">
+                        <a href="/admin/trade/" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-home"></i></span><span class="pcoded-mtext">Dashboard</span></a>
+                    </li>
+                    <li>
+                        <a href="/admin/trade/tradebook/" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-layout"></i></span><span class="pcoded-mtext">Responses
+                            </span></a>
+                    </li>
+                    <li class="nav-item pcoded-hasmenu">
+                        <a href="#!" class="nav-link "><span class="pcoded-micon"><i
+                                    class="feather icon-box"></i></span><span class="pcoded-mtext">All Api's
+                                </span></a>
+                        <ul class="pcoded-submenu">
+                            <li><a href="/admin/trade/angelapi/">Angel ONE</a></li>
+                            <li><a href="/admin/trade/dhanapi/">Dhan HQ</a></li>
+                            <li><a href="/admin/trade/aliceapi/">Alice Blue</a></li>
+                            <li><a href="/admin/trade/fyersapi/">Fyers</a></li>
+                            <li><a href="/admin/trade/paisaapi/">5 Paisa</a></li>
+                        </ul>
+                    </li>
+                </ul>
+
+
+            </div>
+        </div>
+    </nav>
+
+  
+    <!-- [ navigation menu ] end -->
+    <!-- [ Header ] start -->
+    <header class="navbar pcoded-header navbar-expand-lg navbar-light header-dark">
+
+
+        <div class="m-header">
+            <a class="mobile-menu" id="mobile-collapse" href="#!"><span></span></a>
+            <!-- ========   change your logo hear   ============ -->
+            <h4 class="text-white mt-2">Algo-Admin</h4>
+            <a href="#!" class="mob-toggler">
+                <i class="feather icon-more-vertical"></i>
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="navbar-nav ml-auto">
+                <li>
+                    <div class="dropdown drp-user">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                            <i class="feather icon-user"></i>
+                        </a>
+                        <div class="dropdown-menu dropdown-menu-right profile-notification">
+                            <div class="pro-head">
+                                <img src="/static/images/user/avatar.jpg" class="img-radius" alt="User-Profile-Image">
+                                <a href="/profile" class="text-white"><span>Hii {{request.user}}</span></a>
+                                <a href="/logout" class="dud-logout" title="Logout">
+                                    <i class="feather icon-log-out"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
+
+    </header>
+    <!-- [ Header ] end -->
+
+
+    <!-- [ Main Content ] start -->
+    <div class="pcoded-main-container">
+        <div class="pcoded-content">
+            <!-- [ breadcrumb ] start -->
+            <div class="page-header">
+                <div class="page-block">
+                    {% if messages %}
+                    {% for messages in messages %}
+                    <div class="alert alert-{{messages.tags}} alert-dismissible fade show" role="alert">
+                        {{messages}}
+                        <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                                aria-hidden="true">&times;</span></button>
+                    </div>
+                    {% endfor %}
+                    {% endif %}
+                    {% block body %}
+                    {% endblock body %}
+                </div>
+            </div>
+            <!-- [ breadcrumb ] end -->
+            <!-- [ Main Content ] start -->
+
+            <!-- [ Main Content ] end -->
+        </div>
+    </div>
+    <script src="/static/js/vendor-all.min.js"></script>
+    <script src="/static/js/plugins/bootstrap.min.js"></script>
+    <script src="/static/js/pcoded.min.js"></script>
+    <script src="/static/js/pages/dashboard-main.js"></script>
+</body>
+
+</html>

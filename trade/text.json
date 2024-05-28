@@ -1,0 +1,75 @@
+{
+    "syntaxcount": 4,
+    "syntax1": {
+        "broker": "angel",
+        "variety": "NORMAL",
+        "position":"close",
+        "tradingsymbol": "BANKNIFTY03AUG2345100CE",
+        "symboltoken": "43479",
+        "transactiontype": "BUY",
+        "exchange": "NFO",
+        "ordertype": "MARKET",
+        "producttype": "INTRADAY",
+        "duration": "DAY",
+        "price": "0",
+        "squareoff": "0",
+        "stoploss": "0",
+        "quantity": "15",
+        "trailing_sl":10
+    },
+    "syntax2": {
+        "broker": "alice",
+        "transactiontype": "Buy",
+        "exchange": "NFO",
+        "symbol": "BANKNIFTY2370645200CE",
+        "quantity": "25",
+        "ordertype": "Market",
+        "producttype": "Normal",
+        "price": "1"
+    },
+    "syntax3": {
+        "broker": "dhan",
+        "transactiontype": "Buy",
+        "segment": "NSE",
+        "quantity": "1",
+        "ordertype": "Market",
+        "producttype": "INTRA",
+        "price": "1",
+        "securityid": "1333"
+    },
+    "syntax4": {
+        "broker": "fyers",
+        "symbol": "NSE:SBICARD-EQ",
+        "qty": 10,
+        "type": 1,
+        "side": 1,
+        "productType": "INTRADAY",
+        "limitPrice": "MARKET",
+        "stopPrice": 1,
+        "validity": "DAY",
+        "disclosedQty": 0,
+        "offlineOrder": "False",
+        "stopLoss": 0,
+        "takeProfit": 0
+    }
+}
+{
+    "syntaxcount": 1,
+    "syntax1": {
+        "broker": "angel",
+        "variety": "NORMAL",
+        "position":"close",
+        "tradingsymbol": "CRUDEOIL23SEP7400CE",
+        "symboltoken": "258587",
+        "transactiontype": "BUY",
+        "exchange": "MCX",
+        "ordertype": "MARKET",
+        "producttype": "CARRYFORWARD",
+        "duration": "DAY",
+        "price": "0",
+        "squareoff": "0",
+        "stoploss": "16",
+        "quantity": "15",
+        "option":"True",
+        "trailing_sl":2
+    }}

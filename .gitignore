@@ -1,0 +1,12 @@
+# Django #
+*.log
+*.pot
+*.pyc
+*.csv
+__pycache__
+
+.env
+./.vscode/*
+
+target_lists/
+order_datas/

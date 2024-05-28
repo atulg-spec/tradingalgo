@@ -1,0 +1,88 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+<br>
+<form action="/strat" method="post">
+    {% csrf_token %}
+    <h1 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold mb-4">Add Strategy</h1>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">SELECT SYMBOL</label>
+    <br>
+    <select id="symbol" name="symbol" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        {% for x in sym %}
+        <option value="{{x.syb}}">{{x.syb}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">QUANTITY</label>
+    <br>
+    <input type="text" name="quantity" placeholder="0"
+        class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2" required>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">SELECT SEGMENT</label>
+    <br>
+    <select id="segment" name="segment" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        {% for x in seg %}
+        <option value="{{x.sgm}}">{{x.sgm}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">SELECT STRATERGY</label>
+    <br>
+    <select id="strategy" name="strategy" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        {% for x in str %}
+        <option value="{{x.stg}}">{{x.stg}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">SELECT ORDER TYPE</label>
+    <br>
+    <select id="ordertype" name="ordertype" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        {% for x in otype %}
+        <option value="{{x.type}}">{{x.type}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">SELECT PRODUCT TYPE</label>
+    <br>
+    <select id="producttype" name="producttype" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        {% for x in ptype %}
+        <option value="{{x.type}}">{{x.type}}</option>
+        {% endfor %}
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">PRICE</label>
+    <br>
+    <input type="text" name="price" placeholder="0" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2"
+        required>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">BROKER</label>
+    <br>
+    <select id="broker" name="broker" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        <option value="ANGEL">ANGEL</option>
+        <option value="5 PAISA">5 PAISA</option>
+        <option value="ALICE BLUE">ALICE BLUE</option>
+        <option value="FYERS">FYERS</option>
+        <option value="DHAN HQ">DHAN HQ</option>
+    </select>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">BRACK COUNT</label>
+    <br>
+    <select id="brackcount" name="brackcount" class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2">
+        <option value="1">1</option>
+        <option value="2">2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+    <br>
+    <label class="text-base md:text-lg lg:text-xl xl:text-2xl mb-2">Syntax</label>
+    <br>
+    <input type="text" name="syntax" placeholder="syntax"
+        class="border border-gray-300 rounded-md p-2 max-w-full w-full mb-2" required>
+    <br><br>
+    <button type="submit" class="bg-purple-500 hover:bg-purple-600 px-6 py-2 rounded-lg text-white ml-5">ADD</button>
+</form>
+{% endblock body %}

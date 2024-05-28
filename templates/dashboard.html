@@ -1,0 +1,529 @@
+{% extends 'adminmain.html' %}
+
+{% block body %}
+
+{% if user.is_authenticated %}
+{% else %}
+<script>location.href = "/"</script>
+{% endif %}
+
+<style>
+  a {
+    color: black;
+  }
+</style>
+
+<div class="w-100">
+  <div class="card">
+    <div class="card-block">
+      <marquee behavior='scroll' direction='left' scrollamount='5' onmouseover='this.stop()' onmouseout='this.start()'>
+        {% for x in headline reversed %}
+        <label class="px-3 border-right border-info font-weight-bolder">
+          <i class="feather icon-chevrons-right text-c-green"></i>
+          {{x.headline}}
+        </label>
+        {% endfor %}
+      </marquee>
+    </div>
+  </div>
+</div>
+
+
+
+<div class="card" style="pointer-events: none;">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-ticker-tape.js"
+      async>
+        {
+          "symbols": [
+            {
+              "description": "SBIN-EQ",
+              "proName": "SBIN-EQ"
+            },
+            {
+              "description": "HDFCBANK-EQ",
+              "proName": "HDFCBANK-EQ"
+            },
+            {
+              "description": "BAJAJFINSV",
+              "proName": "BAJAJFINSV"
+            },
+            {
+              "description": "RELIANCE",
+              "proName": "BSE:RELIANCE"
+            },
+            {
+              "description": "APOLLOHOSP",
+              "proName": "BSE:APOLLOHOSP"
+            },
+            {
+              "description": "NIFTYEES",
+              "proName": "BSE:NIFTYEES"
+            },
+            {
+              "description": "KOTAKBANK",
+              "proName": "BSE:KOTAKBANK"
+            }
+          ],
+            "showSymbolLogo": true,
+              "colorTheme": "light",
+                "isTransparent": false,
+                  "displayMode": "adaptive",
+                    "locale": "in"
+        }
+      </script>
+  </div>
+  <!-- TradingView Widget END -->
+</div>
+
+
+<div class="card">
+  <div class="card-header borderless ">
+    <h5>API Dashboard</h5>
+    <div class="card-header-right">
+      <div class="btn-group card-option">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="feather icon-more-horizontal"></i>
+        </button>
+        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+          <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a>
+          </li>
+          <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+          <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+          <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+        </ul>
+      </div>
+    </div>
+    <span class="d-block m-t-5">Your <code>API's</code> will be displayed Here.</span>
+  </div>
+
+  <div class="card-body table-border-style">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Description</th>
+            <th></th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          {% for x in angelapiob reversed %}
+          <tr>
+            <td>
+              <label class="">{{x.apiname}}</label>
+              <br>
+              <label class="pcoded-menu-caption text-c-green">
+                Angel ONE
+              </label>
+              <br>
+              <label class="text-c-blue" style="font-size: 12px;">
+                {{x.datetime}}
+              </label>
+            </td>
+            <td class="text-center">
+              {% if x.is_trading %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="angel">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-success">Active</button>
+              </form>
+              {% else %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="angel">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-danger">Inactive</button>
+              </form>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <a href="/deleteangelapi/{{x.apiid}}">
+                <span class="badge badge-pill badge-light-danger">delete</span>
+              </a>
+            </td>
+            <td class="text-center">
+              <a href="/modifyangelapi/{{x.apiid}}">
+                <i class="feather icon-settings"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for x in dhanapiob reversed %}
+          <tr>
+            <td>
+              <label class="">{{x.apiname}}</label>
+              <br>
+              <label class="pcoded-menu-caption text-c-green">
+                Dhan HQ
+              </label>
+              <br>
+              <label class="text-c-blue" style="font-size: 12px;">
+                {{x.datetime}}
+              </label>
+            </td>
+            <td class="text-center">
+              {% if x.is_trading %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="dhan">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-success">Active</button>
+              </form>
+              {% else %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="dhan">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-danger">Inactive</button>
+              </form>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <a href="/deletedhanapi/{{x.apiid}}">
+                <span class="badge badge-pill badge-light-danger">delete</span>
+              </a>
+            </td>
+            <td class="text-center">
+              <a href="/modifydhanapi/{{x.apiid}}">
+                <i class="feather icon-settings"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for x in fyersapiob reversed %}
+          <tr>
+            <td>
+              <label class="">{{x.apiname}}</label>
+              <br>
+              <label class="pcoded-menu-caption text-c-green">
+                Fyers
+              </label>
+              <br>
+              <label class="text-c-blue" style="font-size: 12px;">
+                {{x.datetime}}
+              </label>
+            </td>
+            <td class="text-center">
+              {% if x.is_trading %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="fyers">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-success">Active</button>
+              </form>
+              {% else %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="fyers">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-danger">Inactive</button>
+              </form>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <a href="/deletefyersapi/{{x.apiid}}">
+                <span class="badge badge-pill badge-light-danger">delete</span>
+              </a>
+            </td>
+            <td class="text-center">
+              <a href="/modifyfyersapi/{{x.apiid}}">
+                <i class="feather icon-settings"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for x in aliceapiob reversed %}
+          <tr>
+            <td>
+              <label class="">{{x.apiname}}</label>
+              <br>
+              <label class="pcoded-menu-caption text-c-green">
+                Alice Blue
+              </label>
+              <br>
+              <label class="text-c-blue" style="font-size: 12px;">
+                {{x.datetime}}
+              </label>
+            </td>
+            <td class="text-center">
+              {% if x.is_trading %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="alice">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-success">Active</button>
+              </form>
+              {% else %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="alice">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-danger">Inactive</button>
+              </form>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <a href="/deletealiceapi/{{x.apiid}}">
+                <span class="badge badge-pill badge-light-danger">delete</span>
+              </a>
+            </td>
+            <td class="text-center">
+              <a href="/modifyaliceapi/{{x.apiid}}">
+                <i class="feather icon-settings"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+          {% for x in paisaapiob reversed %}
+          <tr>
+            <td>
+              <label class="">{{x.apiname}}</label>
+              <br>
+              <label class="pcoded-menu-caption text-c-green">
+                5 Paisa
+              </label>
+              <br>
+              <label class="text-c-blue" style="font-size: 12px;">
+                {{x.datetime}}
+              </label>
+            </td>
+            <td class="text-center">
+              {% if x.is_trading %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="paisa">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-success">Active</button>
+              </form>
+              {% else %}
+              <form action="/status" method="post">
+                {% csrf_token %}
+                <input type="hidden" name="broker" value="paisa">
+                <input type="hidden" name="id" value="{{x.apiid}}">
+                <button type="submit" class="badge badge-pill badge-light-danger">Inactive</button>
+              </form>
+              {% endif %}
+            </td>
+            <td class="text-center">
+              <a href="/deletepaisaapi/{{x.apiid}}">
+                <span class="badge badge-pill badge-light-danger">delete</span>
+              </a>
+            </td>
+            <td class="text-center">
+              <a href="/modifypaisaapi/{{x.apiid}}">
+                <i class="feather icon-settings"></i>
+              </a>
+            </td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-12" style="pointer-events: none;">
+  <div class="row overflow-auto">
+    {% for x in st reversed %}
+    <div class="">
+      <div class="card text-left">
+        <div class="card-body">
+          <!-- TradingView Widget BEGIN -->
+          <div class="tradingview-widget-container">
+            <div class="tradingview-widget-container__widget"></div>
+            <script type="text/javascript"
+              src="https://s3.tradingview.com/external-embedding/embed-widget-single-quote.js" async>
+                {
+                  "symbol": "{{x.symbol}}",
+                    "width": 350,
+                      "colorTheme": "light",
+                        "isTransparent": false,
+                          "locale": "in"
+                }
+              </script>
+          </div>
+          <!-- TradingView Widget END -->
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header borderless ">
+    <h5>Stratergies</h5>
+    <div class="card-header-right">
+      <div class="btn-group card-option">
+        <button type="button" class="btn dropdown-toggle" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">
+          <i class="feather icon-more-horizontal"></i>
+        </button>
+        <ul class="list-unstyled card-option dropdown-menu dropdown-menu-right">
+          <li class="dropdown-item full-card"><a href="#!"><span><i class="feather icon-maximize"></i>
+                maximize</span><span style="display:none"><i class="feather icon-minimize"></i> Restore</span></a>
+          </li>
+          <li class="dropdown-item minimize-card"><a href="#!"><span><i class="feather icon-minus"></i>
+                collapse</span><span style="display:none"><i class="feather icon-plus"></i> expand</span></a></li>
+          <li class="dropdown-item reload-card"><a href="#!"><i class="feather icon-refresh-cw"></i> reload</a></li>
+          <li class="dropdown-item close-card"><a href="#!"><i class="feather icon-trash"></i> remove</a></li>
+        </ul>
+      </div>
+    </div>
+    <span class="d-block m-t-5">Your <code>Stratergies's</code> will be displayed Here.</span>
+  </div>
+
+  <div class="card-body table-border-style">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Stratergy</th>
+            <th>Segment</th>
+            <th>Symbol</th>
+            <th>Qty</th>
+            <th>Product type</th>
+            <th>Order type</th>
+            <th>Status</th>
+            <th>Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <div id="addstratergy" class="modal fade" tabindex="-1" role="dialog"
+            aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <form action="/strat" method="post">
+                {% csrf_token %}
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalCenterTitle">Add stratergy</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span
+                        aria-hidden="true">&times;</span></button>
+                  </div>
+                  <div class="modal-body">
+                    <label for="" class="floating-label">Select Stratergy</label>
+                    <select id="stratergy" name="strategy" class="form-control">
+                      {% for j in stra %}
+                      <option value="{{j.stg}}">{{j.stg}}</option>
+                      {% endfor %}
+                    </select>
+                    <br>
+                    <label for="" class="floating-label">Segment</label>
+                    <select id="segment" name="segment" class="form-control">
+                      {% for j in seg %}
+                      <option value="{{j.segment_name}}">{{j.segment_name}}</option>
+                      {% endfor %}
+                    </select>
+                    <br>
+                    <label for="" class="floating-label">Symbol</label>
+                    <input type="text" class="form-control" name="symbol" placeholder="SBIN-EQ" value="" required>
+                    <br>
+                    <label for="" class="floating-label">Quantity</label>
+                    <input type="number" class="form-control" name="quantity" value="0" required>
+                    <br>
+                    <label for="" class="floating-label">Product Type</label>
+                    <select id="producttype" name="producttype" class="form-control">
+                      {% for j in ptype %}
+                      <option value="{{j.type}}">{{j.type}}</option>
+                      {% endfor %}
+                    </select>
+                    <br>
+                    <label for="" class="floating-label">Order Type</label>
+                    <select id="ordertype" name="ordertype" class="form-control">
+                      {% for j in otype %}
+                      <option value="{{j.type}}">{{j.type}}</option>
+                      {% endfor %}
+                    </select>
+                    <br>
+                    <label for="" class="floating-label">Select your Api</label>
+                    <select id="broker" name="broker" class="form-control">
+                      {% for j in angelapiob %}
+                      <option value="Angel ONE:{{j.apiid}}">Angel One >> {{j.apiname}}</option>
+                      {% endfor %}
+                      {% for j in aliceapiob %}
+                      <option value="Alice Blue:{{j.apiid}}">Alice Blue >> {{j.apiname}}</option>
+                      {% endfor %}
+                      {% for j in dhanapiob %}
+                      <option value="Dhan HQ:{{j.apiid}}">Dhan HQ >> {{j.apiname}}</option>
+                      {% endfor %}
+                      {% for j in fyersapiob %}
+                      <option value="Fyers:{{j.apiid}}">Fyers >> {{j.apiname}}</option>
+                      {% endfor %}
+                      {% for j in paisaapiob %}
+                      <option value="5 Paisa:{{j.apiid}}">5 Paisa >> {{j.apiname}}</option>
+                      {% endfor %}
+                    </select>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn  btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn  btn-primary">Add</button>
+                  </div>
+                </div>
+              </form>
+            </div>
+          </div>
+          {% for x in st reversed %}
+          <tr>
+            <td>{{x.strategy}}</td>
+            <td>{{x.segment}}</td>
+            <td>{{x.symbol}}</td>
+            <td>{{x.quantity}}</td>
+            <td>{{x.product_type}}</td>
+            <td>{{x.order_type}}</td>
+            {% if x.status == "failed" %}
+            <td><span class="badge badge-pill badge-light-danger">{{x.status}}</span></td>
+            {% elif x.status == "success" %}
+            <td><span class="badge badge-pill badge-light-success">{{x.status}}</span></td>
+            {% else %}
+            <td><span class="badge badge-pill badge-light-info">{{x.status}}</span></td>
+            {% endif %}
+            <td><a href="/deletestratergy/{{x.id}}"><span class="badge badge-pill badge-light-danger">delete</span></a>
+            </td>
+          </tr>
+          {% endfor %}
+          <tr>
+            <td>
+              <button type="button" class="btn  btn-primary" data-toggle="modal" data-target="#addstratergy">Add
+                Stratergy</button>
+            </td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<div class="col-xl-12 overflow-auto">
+  <!-- TradingView Widget BEGIN -->
+  <div class="tradingview-widget-container">
+    <div class="tradingview-widget-container__widget"></div>
+    <script type="text/javascript" src="https://s3.tradingview.com/external-embedding/embed-widget-screener.js" async>
+      {
+        "width": 1200,
+          "height": 500,
+            "defaultColumn": "overview",
+              "defaultScreen": "top_gainers",
+                "market": "india",
+                  "showToolbar": true,
+                    "colorTheme": "light",
+                      "locale": "in"
+      }
+    </script>
+  </div>
+  <!-- TradingView Widget END -->
+</div>
+{% endblock body %}

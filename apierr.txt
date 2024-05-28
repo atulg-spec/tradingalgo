@@ -1,0 +1,638 @@
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '2924050311095', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '5924050311705', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924050326215', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924050326305', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924050327355', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '6924050328435', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '5924050337285', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '4924050338375', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '4924050338445', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '5924050338415', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '12240503394308', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '62240503416208', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '42240503423008', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '42240503426708', 'orderStatus': 'TRANSIT'}} 
+Final error, 'NoneType' object has no attribute 'response' 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924050385195', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '5924050386235', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '492405212715', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '52240521383508', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240521427108', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '62240521596708', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '12240521626508', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240522160708', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '22240522176708', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240522206208', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240522274908', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '62240522285008', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240522293908', 'orderStatus': 'TRANSIT'}} 
+Final error, 'NoneType' object has no attribute 'response' 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '32240522295308', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '12240522292208', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '12240522298808', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '62240522613308', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '42240522621608', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '12240522692908', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': 'Market is Closed! Want to place an offline order?'}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3224052327008', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '42240523456408', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '52240523494808', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '2924052415135', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '4924052416945', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '6924052424745', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924052428055', 'orderStatus': 'TRANSIT'}} 
+Final error, 'NoneType' object has no attribute 'response' 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '4924052428915', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '6924052484835', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '4924052490715', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '6924052711155', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924052711815', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '3924052712475', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '6924052712215', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '1924052713495', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'failure', 'remarks': {'error_code': 'RS-9005', 'message': ' todo mandatory fields '}, 'data': ''} 
+Dhan me aaya 
+Order dhan me bhi 
+User mila 
+Position ke baad bhi 
+Order {'status': 'success', 'remarks': '', 'data': {'orderId': '2924052712875', 'orderStatus': 'TRANSIT'}} 
+Dhan me aaya 
+Order dhan me bhi 
+Dhan me aaya 
+Order dhan me bhi 

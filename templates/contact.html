@@ -1,0 +1,27 @@
+{% extends 'adminmain.html' %}
+{% block body %}
+<div class="card">
+    <div class="card-header">
+        <h5>CONTACT US</h5>
+    </div>
+    <div class="card-body">
+        <form action="/help" method="post" class="contactform">
+            {% csrf_token %}
+            <div class="col-sm-5">
+                <div class="form-group">
+                    <label class="floating-label">Enter your Email or Phone Number</label>
+                    <input type="text" class="form-control" placeholder="number or email" name="numemail" required>
+                </div>
+            </div>
+            <div class="col-sm-5">
+                <div class="form-group">
+
+                    <label class="floating-label">Describe your Issue</label>
+                    <textarea name="issue" class="form-control" required></textarea>
+                </div>
+            </div>
+            <button type="submit" class="ml-3 btn btn-primary">SUBMIT</button>
+        </form>
+    </div>
+</div>
+{% endblock body %}
