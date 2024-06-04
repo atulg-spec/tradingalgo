@@ -10,10 +10,8 @@ import json
 from datetime import datetime,timedelta
 import pyotp
 from fyers_api import accessToken
-try:
-    from SmartApi import SmartConnect
-except:
-    from smartapi import smartConnect
+
+from SmartApi import SmartConnect
 from fyers_api import fyersModel
 from dhanhq import dhanhq
 from py5paisa import FivePaisaClient
@@ -37,6 +35,7 @@ from alerts.models import IndexTokens
 from django.db.models import Q
 User = get_user_model()
 al = User.objects.get(username='all')
+#al = ""
 # SYMBOL LIST
 search_symbollist = {}
 symboldata = exc_symbols()

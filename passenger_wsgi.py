@@ -1,0 +1,1 @@
+from trading.wsgi import application

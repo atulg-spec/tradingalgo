@@ -98,7 +98,7 @@ def rename_columns(input_csv_file, output_csv_file):
 
 def csv_to_python_object():
     data = []
-    with open('/root/trading/syb.csv', 'r', newline='') as csvfile:
+    with open('/home/smartalgo/tradingalgo/syb.csv', 'r', newline='') as csvfile:
         csvreader = csv.DictReader(csvfile)
 
         for row in csvreader:
