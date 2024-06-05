@@ -147,7 +147,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # ]
 
 CSRF_TRUSTED_ORIGINS = [
-    'smart-algo.in',
     'https://smart-algo.in',
     'https://www.smart-algo.in',
     'http://127.0.0.1:8000',

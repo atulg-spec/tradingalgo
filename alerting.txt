@@ -570,3 +570,9 @@ https://smart-algo.in/alert/smartorder
 POSITION 
 https://smart-algo.in/alert/smartorder 
 500 
+POSITION 
+https://smart-algo.in/alert/smartorder 
+500 
+POSITION 
+https://smart-algo.in/alert/smartorder 
+500 
